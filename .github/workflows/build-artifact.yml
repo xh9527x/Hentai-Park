@@ -1,0 +1,15 @@
+name: Build APK (Artifact only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      matrix: '{"include":[{"platform":"android","os":"ubuntu-24.04","arch":"arm64-armv7-x64"}]}'
+      release: true
+    secrets: inherit
